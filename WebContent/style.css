@@ -1,0 +1,42 @@
+@charset "ISO-8859-1";
+
+*{
+	box-sizing:border-box;
+	margin:0 auto;
+	padding:0; 	
+}
+
+body{
+	background-image: url("skane-image.jpg");
+ 	background-size: contain;
+	background-repeat: no-repeat;
+	height:100%;
+}
+
+h1, h3{
+	text-align:center;
+		
+}
+h3{
+	background-color:white;
+	opacity:0.8;
+}
+h1{
+	color:red;
+}
+
+input[type=text]{
+	width: 60%;
+	border: 2px solid red;
+  	border-radius: 4px;
+  	padding:5px;
+}
+
+.container-fluid {
+	height:100vh;
+	padding:50px 400px;
+}
+form{
+	padding:10px 20px;
+	
+}
