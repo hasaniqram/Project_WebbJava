@@ -12,7 +12,9 @@ body{
 	background-repeat: no-repeat;
 	height:100%;
 }
-
+header{
+	display: flex;
+}
 h1, h3{
 	text-align:center;
 		
@@ -24,7 +26,11 @@ h3{
 h1{
 	color:red;
 }
-
+img{
+	height:100px;
+	margin-bottom:10px;
+	border-radius:50%;
+}
 input[type=text]{
 	width: 60%;
 	border: 2px solid red;

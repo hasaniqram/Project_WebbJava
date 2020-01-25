@@ -16,10 +16,12 @@
 
   <body>
   <div class = "container-fluid">
-   <h1> AKOH-N SkÃ¥netrafiken</h1>
-	
+   <header> 
+   <img src = "skane-logo.jpg" /> 
+   <h1>AKOH-N Skånetrafiken </h1>
+	</header>
 	<h3> Get the nearest buss lines near you!</h3>
-		<form>
+		<form action = "servlet" method="get" >
 		<input type = "text"  class = "addr" name = "address"  placeholder= "Your position">
 		<input type = "submit" value = "submit" class="btn btn-primary"> 
 		<input type = "reset"  value= "Refresh" class="btn btn-secondary">
