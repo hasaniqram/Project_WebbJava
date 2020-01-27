@@ -22,7 +22,7 @@
 		<form action = "getLatAndLongServlet" method="get">
 		<input type = "text"  id ="addr" name = "address"  placeholder= "Your position">
 		
-  	    <input type="button" onclick="showPosition();" class="btn btn-info" value = "Get Position">
+  	    <input type="button" onclick="showPosition();" class="btn btn-info" value = "Get Your Position">
 		<input type = "submit" value = "Submit" class="btn btn-primary" > 
 		<input type = "reset"  value= "Refresh" class="btn btn-secondary">
 		<div id = "result"> </div>

@@ -39,9 +39,22 @@ public class getLatAndLongServlet extends HttpServlet {
 				response.setContentType("text/html");
 				PrintWriter out = response.getWriter();
 				String address = request.getParameter("address");
+				
+				
+				
+				if(address.contains(",")) {	
+					
+				String[] parts = address.split(",");
+				String longitude = parts[0];
+				String latitude = parts[1];
 				out.print("<br>");
 				out.print("<br>");			
-				out.print("<h1>" + address + "</h1>");		
+				out.print("<p>" + longitude+ "</p>");	
+				out.print("<p>" + latitude+ "</p>");
+				
+				}else {
+					out.println("Request not found!!! ");
+				}
 	}
 
 	/**
