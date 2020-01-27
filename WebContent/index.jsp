@@ -37,15 +37,30 @@
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.14/proj4.js"></script>
      <script>
 	
      function showPosition() {
          if(navigator.geolocation) {
              navigator.geolocation.getCurrentPosition(function(position) {
-                 var positionInfo =  (position.coords.latitude + ","+ position.coords.longitude);
-                 document.getElementById("addr").value = positionInfo;
+                 var positionInfo =  (position.coords.longitude + ","+ position.coords.latitude);
+                 //document.getElementById("addr").value = positionInfo;
+                proj4.defs([
+     				['WGS84', 
+     				"+title=WGS 84 (long/lat) +proj=longlat +ellps=WGS84 +datum=WGS84 +units=degrees"],
+     				['RT90',"+proj=tmerc +lat_0=0 +lon_0=15.80827777777778 +k=1 +x_0=1500000 +y_0=0 +ellps=bessel +towgs84=414.1,41.3,603.1,-0.855,2.141,-7.023,0 +units=m +no_defs"]
+
+     				]);
+     				var source='WGS84';
+     				var target='RT90';
+     				
+     				var result = proj4(source, target, [position.coords.longitude ,
+     					position.coords.latitude]);
+     				
+                 document.getElementById("addr").value = (result[0] + "," + result[1]);
+                        
                  
-                 //document.getElementById("myText").value = "Johnny Bravo";
              });
          } else {
              alert("Sorry, your browser does not support HTML5 geolocation.");

@@ -52,6 +52,7 @@ public class StationFetch extends HttpServlet {
 
 		// Build the API call by adding x and y into a URL
 		String x = "6167930", y = "1323215";
+	
 		String fetchStationStr = "http://www.labs.skanetrafiken.se/v2.2/neareststation.asp?x="
 				+ x + "&y=" + y + "&Radius=500";
 
