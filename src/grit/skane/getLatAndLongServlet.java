@@ -43,7 +43,7 @@ public class getLatAndLongServlet extends HttpServlet {
 				out.print("<br>");			
 				out.print("<h1>" + address + "</h1>");
 				
-
+				
 		
 		
 		
@@ -55,7 +55,13 @@ public class getLatAndLongServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+			response.setContentType("text/html");
+			PrintWriter out = response.getWriter();
+		
+			
+		
+		
 	}
 
 }
