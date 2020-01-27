@@ -6,15 +6,10 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.io.StringReader;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -25,38 +20,32 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 
-/**
- * Servlet implementation class StationFetch
- */
-@WebServlet("/StationFetch")
-public class StationFetch extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-
-	private List<Station> stations = new ArrayList<Station>();
-    /**
-     * Default constructor. 
-     */
-    public StationFetch() {
-    	super();
-        // TODO Auto-generated constructor stub
-    }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-
-		response.setContentType("text/html");
-    	PrintWriter out = response.getWriter();
-    	
-
-		// Build the API call by adding x and y into a URL
-		String x = "6167930", y = "1323215";
+public class Station {
+	private String name;
+	private String id;
+	private int distance;
+	private List<String> lines = new ArrayList<String>();
 	
-		String fetchStationStr = "http://www.labs.skanetrafiken.se/v2.2/neareststation.asp?x="
-				+ x + "&y=" + y + "&Radius=500";
+	Station(String name, String id, int distance) throws IOException{
+		this.name = name;
+		this.id = id;
+		this.distance = distance;
+		
+		fetchLines();
+	}
+	
+	public String toString() {
+		return distance + " " + name + " " + id; 
+	}
+	
+	public List<String> getDeparts(){
+		return lines;
+	}
+	
+	private void fetchLines() throws IOException {
+		
+		// Build the API call
+		String fetchStationStr = "http://www.labs.skanetrafiken.se/v2.2/stationresults.asp?selPointFrKey=" + id;
 
 		System.out.println(fetchStationStr);
 
@@ -99,7 +88,7 @@ public class StationFetch extends HttpServlet {
 		System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
 
 		// Create a Node list that gets everything in and under the "clouds" tag  
-		NodeList nList = doc.getElementsByTagName("NearestStopArea");
+		NodeList nList = doc.getElementsByTagName("Line");
 		
 		System.out.println(nList.getLength());
 		// loop through the content of the tag
@@ -110,39 +99,22 @@ public class StationFetch extends HttpServlet {
 			if (node.getNodeType() == Node.ELEMENT_NODE) {
 
 				// set the current node as an Element
-				Element eElement = (Element) node;
+				Element e = (Element) node;
 				// get the content of an attribute in element
 				// and print it out to the client 
-				stations.add(new Station(eElement.getElementsByTagName("Name").item(0).getTextContent(),
-						 eElement.getElementsByTagName("Id").item(0).getTextContent(),
-						 Integer.parseInt(eElement.getElementsByTagName("Distance").item(0).getTextContent())));			
+
+				String time = get(e, "JourneyDateTime");
+				time = time.substring(time.indexOf("T") + 1);
+				lines.add(time + " - " + get(e, "LineTypeName") + " " + get(e, "LineTypeId") + 
+						  ": " + get(e, "Towards"));
 			}
 		}
-		out.print("<ul>");
-		for (Station s : stations) {
-			out.print("<li>" + s.toString() + "<ul>");
-			
-			for (String str : s.getDeparts()) {
-				out.print("<li>" + str + "</li>");
-			}
-			
-			out.print("</li></ul>");
-		}
-		out.print("</ul>");
-		
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+	
+	private static String get(Element e, String tag) {
+		return e.getElementsByTagName(tag).item(0).getTextContent();
 	}
-
-// Method the makes a XML doc out of a string, if it is in a XML format. 	
+	
 	private static Document convertStringToXMLDocument(String xmlString) {
 		// Parser that produces DOM object trees from XML content
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
