@@ -20,6 +20,7 @@
 	</header>
 	<h3> Get the nearest buss lines near you!</h3>
 		<form action = "getLatAndLongServlet" method="get">
+		<!-- <form action = "StationFetch" method="get"> -->
 		<input type = "text"  id ="addr" name = "address"  placeholder= "Your position">
 		
   	    <input type="button" onclick="showPosition();" class="btn btn-info" value = "Get Your Position">

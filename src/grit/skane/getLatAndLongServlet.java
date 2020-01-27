@@ -32,29 +32,27 @@ public class getLatAndLongServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
-		
 		//Code here 
 		
 		// Check if the right info got sent
-				response.setContentType("text/html");
-				PrintWriter out = response.getWriter();
-				String address = request.getParameter("address");
+		response.setContentType("text/html");
+		PrintWriter out = response.getWriter();
+		String address = request.getParameter("address");
+		
+		
+		if(address.contains(",")) {	
 				
-				
-				
-				if(address.contains(",")) {	
-					
-				String[] parts = address.split(",");
-				String longitude = parts[0];
-				String latitude = parts[1];
-				out.print("<br>");
-				out.print("<br>");			
-				out.print("<p>" + longitude+ "</p>");	
-				out.print("<p>" + latitude+ "</p>");
-				
-				}else {
-					out.println("Request not found!!! ");
-				}
+			String[] parts = address.split(",");
+			String longitude = parts[0];
+			String latitude = parts[1];
+			out.print("<br>");
+			out.print("<br>");			
+			out.print("<p>" + longitude+ "</p>");	
+			out.print("<p>" + latitude+ "</p>");
+			
+		}else {
+			out.println("Request not found!!! ");
+		}
 	}
 
 	/**
