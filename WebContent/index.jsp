@@ -19,11 +19,11 @@
    <h1>AKOH-N Skånetrafiken </h1>
 	</header>
 	<h3> Get the nearest buss lines near you!</h3>
-		<form>
+		<form action = "getLatAndLongServlet" method="get">
 		<input type = "text"  id ="addr" name = "address"  placeholder= "Your position">
 		
-  	    <input type="button" onclick="showPosition();" class="btn btn-info" value = "Get Position"></button>
-		<input type = "submit" value = "Submit" class="btn btn-primary" action = "getLatAndLongServlet" method="get"> 
+  	    <input type="button" onclick="showPosition();" class="btn btn-info" value = "Get Position">
+		<input type = "submit" value = "Submit" class="btn btn-primary" > 
 		<input type = "reset"  value= "Refresh" class="btn btn-secondary">
 		<div id = "result"> </div>
 		</form>
