@@ -20,7 +20,7 @@
 	</header>
 	<h3> Get the nearest buss lines near you!</h3>
 		<form action = "getLatAndLongServlet" method="get">
-		<input type = "text"  id ="addr" name = "address"  placeholder= "Your position">
+		<input type = "text"  id ="addr" name = "coord"  placeholder= "Your position">
 		
   	    <input type="button" onclick="showPosition();" class="btn btn-info" value = "Get Your Position">
 		<input type = "submit" value = "Submit" class="btn btn-primary" > 
@@ -28,6 +28,11 @@
 		<div id = "result"> </div>
 		</form>
 	</div>
+
+
+
+
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

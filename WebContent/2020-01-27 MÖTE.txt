@@ -18,7 +18,8 @@ t.ex. Malmö
 
 
 
-lägga till en ny knapp? "använd current location" (ANDERS)
+lägga till en ny knapp? "använd current location" (ANDERS) -> Har fixat detta, (Tintin)
+
 hämta nuvarande plats samt presentera därifrån (ta geo-location från webbläsaren.)
 			glöm ej felhantering vid ingen data /
 

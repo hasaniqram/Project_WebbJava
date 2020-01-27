@@ -32,15 +32,13 @@ public class getLatAndLongServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
+
 		
-		//Code here 
+			// Check if the right info got sent
 		
-		// Check if the right info got sent
 				response.setContentType("text/html");
 				PrintWriter out = response.getWriter();
-				String address = request.getParameter("address");
-				
-				
+				String address = request.getParameter("coord");
 				
 				if(address.contains(",")) {	
 					

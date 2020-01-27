@@ -47,6 +47,8 @@ public class StationFetch extends HttpServlet {
     	
     	PrintWriter out = response.getWriter();
 		out.append("Served at: ").append(request.getContextPath());
+		
+		
 
 		// Build the API call by adding x and y into a URL
 		String x = "6167930", y = "1323215";
