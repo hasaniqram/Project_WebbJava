@@ -1,0 +1,33 @@
+-----START AV PROGRAMMET-----
+
+start-sidan 
+- fixa medd. om coookies.
+
+användaren skriver in plats eller använder nuvarande
+
+t.ex. Malmö
+
+1. omvandla adress till kordinater.			(Tintin)
+2. omvandla kordinater till närmaste buss-station 	( ODD)
+3. hämta busslinjer från den busshållplatsen/ platser.	( ODD)
+ (får en lista med närmaste busshållplatsen först.)
+
+
+
+-----------------------------------
+
+
+
+lägga till en ny knapp? "använd current location" (ANDERS)
+hämta nuvarande plats samt presentera därifrån (ta geo-location från webbläsaren.)
+			glöm ej felhantering vid ingen data /
+
+
+
+cookies.
+sökhistorik (automcomplete tidigare resor) (HASSAN)
+
+
+-----------------------------------
+
+NÄSTA MÖTE:	Tisdag 10:00
