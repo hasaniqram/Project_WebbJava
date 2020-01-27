@@ -45,7 +45,7 @@
          if(navigator.geolocation) {
              navigator.geolocation.getCurrentPosition(function(position) {
                  var positionInfo =  (position.coords.longitude + ","+ position.coords.latitude);
-                 //document.getElementById("addr").value = positionInfo;
+               // document.getElementById("addr").value = positionInfo;
                 proj4.defs([
      				['WGS84', 
      				"+title=WGS 84 (long/lat) +proj=longlat +ellps=WGS84 +datum=WGS84 +units=degrees"],
@@ -55,11 +55,10 @@
      				var source='WGS84';
      				var target='RT90';
      				
-     				var result = proj4(source, target, [position.coords.longitude ,
-     					position.coords.latitude]);
+     				var result = proj4(source, target, [ position.coords.longitude , position.coords.latitude,]);
      				
                  document.getElementById("addr").value = (result[0] + "," + result[1]);
-                        
+                     
                  
              });
          } else {
