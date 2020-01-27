@@ -4,7 +4,7 @@
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=d	evice-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -21,9 +21,10 @@
    <h1>AKOH-N Skånetrafiken </h1>
 	</header>
 	<h3> Get the nearest buss lines near you!</h3>
-		<form action = "servlet" method="get" >
+		<form>
 		<input type = "text"  class = "addr" name = "address"  placeholder= "Your position">
-		<input type = "submit" value = "submit" class="btn btn-primary"> 
+		<input type = "submit" value = "Get position" class="btn btn-info" action = "getLatAndLongServlet" method="post"> 
+		<input type = "submit" value = "Submit" class="btn btn-primary" action = "getLatAndLongServlet" method="get"> 
 		<input type = "reset"  value= "Refresh" class="btn btn-secondary">
 		</form>
 	</div>
