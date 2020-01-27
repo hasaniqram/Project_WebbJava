@@ -46,7 +46,7 @@ public class Station {
 		
 		// Build the API call
 		String fetchStationStr = "http://www.labs.skanetrafiken.se/v2.2/stationresults.asp?selPointFrKey=" + id;
-
+		System.out.println(toString());
 		System.out.println(fetchStationStr);
 
 		// Set the URL that will be sent

@@ -4,6 +4,7 @@ package grit.skane;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -49,6 +50,11 @@ public class getLatAndLongServlet extends HttpServlet {
 			out.print("<br>");			
 			out.print("<p>" + longitude+ "</p>");	
 			out.print("<p>" + latitude+ "</p>");
+			
+			request.setAttribute("long", longitude);
+			request.setAttribute("lat", latitude);
+			RequestDispatcher rd = request.getRequestDispatcher("StationFetch");
+			rd.forward(request, response);
 			
 		}else {
 			out.println("Request not found!!! ");
