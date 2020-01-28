@@ -13,18 +13,21 @@
  	 </head>
 
   <body>
-  <div class = "container-fluid">
-   <header> 
-   <img src = "skane-logo.jpg" /> 
-   <h1>AKOH-N Skånetrafiken </h1>
-	</header>
-	<h3> Get the nearest buss lines near you!</h3>
-		<form action = "getLatAndLongServlet" method="get">
-		<input type = "text"  id ="addr" name = "coord"  placeholder= "Your position">
-		
-  	    <input type="button" onclick="showPosition();" class="btn btn-info" value = "Get Your Position">
+ <div class = "container-fluid">
+  <header> 
+  <img src = "skane-logo.jpg" /> 
+  <h1>AKOH-N SkÃ¥netrafiken </h1>
+</header>
+<h3> Get the nearest buss lines near you!</h3>
+	<form action = "getLatAndLongServlet" method="get">
+	<input type = "text"  id ="addr" name = "coord"  placeholder= "Your position">
+	
+ 	    <input type="button" onclick="showPosition();" class="btn btn-info" value = "Get Your Position">
 		<input type = "submit" value = "Submit" class="btn btn-primary" > 
 		<input type = "reset"  value= "Refresh" class="btn btn-secondary">
+		  <form action="CookieController" method="post">
+		  <input type="submit" value="Search History" class="btn btn-secondary">
+		  </form>
 		<div id = "result"> </div>
 		</form>
 	</div>
